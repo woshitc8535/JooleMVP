@@ -1,0 +1,19 @@
+<img src="assets/images/logo.png">
+<p>Building Project Selection Platform</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input type = 'text' placeholder="Username or Email" formControlName="username" required>
+  <div *ngIf="!username.valid && (username.dirty || username.touched)">Invalid Username</div>
+  <input type = "password" placeholder="Password" formControlName="password" required>
+  <div *ngIf="!password.valid &&  (password.dirty || password.touched)">Invalid Password</div>
+
+  <button type="submit" [disabled]="!loginForm.valid">Log In</button>
+</form>
+
+
+<!--<p>-->
+<!--  Form Status: {{ loginForm.status }}<br>-->
+<!--  Username touched:{{username.touched}}<br>-->
+<!--  Password touched:{{password.touched}}<br>-->
+<!--  Username dirty:{{username.dirty}}<br>-->
+<!--  Password dirty:{{password.dirty}}<br>-->
+<!--</p>-->

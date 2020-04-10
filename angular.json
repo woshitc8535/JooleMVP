@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "JooleMVP"
+    }
+  },
+  "defaultProject": "JooleMVP",
+  "cli": {
+    "analytics": "215832db-cebc-4463-a14b-f275303221a0"
+  }
 }

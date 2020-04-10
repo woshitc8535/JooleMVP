@@ -1,0 +1,4 @@
+<div>
+  <a *ngIf="!isLogin" routerLink="/register" (click)="changePage()">sign up</a>
+  <a *ngIf="isLogin" routerLink="/login" (click)="changePage()">log in</a>
+</div>
