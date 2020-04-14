@@ -1,0 +1,92 @@
+<app-mainheader></app-mainheader>
+<div class="head">
+  <div class="navbar">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        Mechanical
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>HVAC Fans</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        An Application
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </div>
+  <div class="subtitle">
+    <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png">
+    <div>
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>
+          Mechanical
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+          HVAC Fans
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+          An Application
+        </nz-breadcrumb-item>
+      </nz-breadcrumb>
+    </div>
+    <div class="specification">Past specification</div>
+    <button class="btn">Add to</button>
+  </div>
+</div>
+
+<div class="scrollable-container">
+  <div class="background">
+    <p>Product Summary</p>
+    <div class="summary">
+      <div>
+        <nz-descriptions nzTitle="DESCRIPTION" nzBordered>
+          <nz-descriptions-item nzTitle="Manufacturer" [nzSpan]="3">Big Ass</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Series Mode" [nzSpan]="3">Haiku H</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Automatic Renewal"[nzSpan]="3">S3150-S0-BC-04-01-C-0</nz-descriptions-item>
+        </nz-descriptions>
+        <nz-descriptions nzTitle="TYPE" nzBordered>
+          <nz-descriptions-item nzTitle="Use Type" [nzSpan]="3">Commercial</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Indoor</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Roof</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Model year" [nzSpan]="3">2016</nz-descriptions-item>
+        </nz-descriptions>
+      </div>
+      <div>
+        <nz-descriptions nzTitle="TECHNICAL SPECIFICATION" nzBordered>
+          <nz-descriptions-item nzTitle="Use Type" [nzSpan]="3">Commercial</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Indoor</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Roof</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Model year" [nzSpan]="3">2016</nz-descriptions-item>
+        </nz-descriptions>
+      </div>
+    </div>
+    <p>Product Details</p>
+    <div class="list">
+
+      <nz-list
+        [nzDataSource]=data
+        nzBordered
+        nzSize="small"
+        [nzRenderItem]="smallItem"
+      >
+        <ng-template #smallItem let-item><nz-list-item [nzContent]="item"></nz-list-item></ng-template>
+      </nz-list>
+    </div>
+    <div>
+      <p>Contact</p>
+      <div class="contact">
+        <nz-descriptions nzTitle="SALES REPRESENTATIVE" nzBordered>
+          <nz-descriptions-item nzTitle="Name" [nzSpan]="3">Commercial</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Phone" [nzSpan]="3">Indoor</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Email" [nzSpan]="3">Roof</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Web" [nzSpan]="3">2016</nz-descriptions-item>
+        </nz-descriptions>
+        <nz-descriptions nzTitle="MANUFACTURER" nzBordered>
+          <nz-descriptions-item nzTitle="Technical Support" [nzSpan]="3">Commercial</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Phone" [nzSpan]="3">Indoor</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Email" [nzSpan]="3">Roof</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Web" [nzSpan]="3">2016</nz-descriptions-item>
+        </nz-descriptions>
+      </div>
+    </div>
+  </div>
+</div>

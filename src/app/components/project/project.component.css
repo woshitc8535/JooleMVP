@@ -1,0 +1,55 @@
+.subtitle{
+  display: flex;
+  align-items: center;
+}
+
+.subtitle nz-breadcrumb{
+  font-size: 20px;
+}
+
+img{
+  height: 40px;
+  width: 80px;
+  padding: 5px;
+}
+
+nz-breadcrumb{
+  padding: 10px;
+}
+
+.specification{
+  flex-grow: 1;
+}
+.btn{
+  margin-right: 40px;
+}
+
+
+.scrollable-container {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.background {
+  padding-top: 30px;
+  height: 1000px;
+}
+nz-descriptions{
+  width: 750px;
+  padding: 15px;
+}
+.summary{
+  display: flex;
+}
+p{
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.list{
+  padding: 20px;
+}
+
+.contact{
+  display: flex;
+}

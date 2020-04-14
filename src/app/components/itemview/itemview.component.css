@@ -1,0 +1,14 @@
+.item{
+  padding: 3px;
+}
+
+nz-card-meta{
+  height: 100px;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

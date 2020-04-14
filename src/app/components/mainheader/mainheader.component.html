@@ -1,16 +1,5 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <img src="assets/images/logo.png">
-<br>
-<br>
-<p>Building Project Selection Platform</p>
-<br>
-<br>
+
 <div class="searchBar">
   <nz-select [ngModel]="'Zhejiang'">
     <nz-option [nzLabel]="'Zhejiang'" [nzValue]="'Zhejiang'"></nz-option>
@@ -18,13 +7,13 @@
   </nz-select>
   <nz-input-group nzSearch nzSize="default" [nzAddOnAfter]="suffixIconSearch">
     <nz-select class="searchInput"
-      nzShowSearch
-      nzServerSearch
-      nzPlaceHolder="input search text"
-      [(ngModel)]="selectedValue"
-      [nzShowArrow]="false"
-      [nzFilterOption]="nzFilterOption"
-      (nzOnSearch)="search($event)"
+               nzShowSearch
+               nzServerSearch
+               nzPlaceHolder="input search text"
+               [(ngModel)]="selectedValue"
+               [nzShowArrow]="false"
+               [nzFilterOption]="nzFilterOption"
+               (nzOnSearch)="search($event)"
     >
       <nz-option *ngFor="let o of listOfOption" [nzLabel]="o.text" [nzValue]="o.value"> </nz-option>
     </nz-select>

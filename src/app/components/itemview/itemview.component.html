@@ -1,0 +1,17 @@
+<div class="item">
+  <nz-card style="width:280px;" [nzCover]="coverTemplate" [nzActions]="[actionCheck, actionButton]">
+    <div class="text">
+      <div>{{manufacturer}}</div><div>{{series}}</div><div>{{model}}</div><div>5000cfm</div><div>max speed</div><div>c</div><div>d</div>
+    </div>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+  </ng-template>
+  <ng-template #actionCheck>
+    <label nz-checkbox [(ngModel)]="checked">Compare</label>
+  </ng-template>
+  <ng-template #actionButton>
+   <button>Add to</button>
+  </ng-template>
+</div>
+

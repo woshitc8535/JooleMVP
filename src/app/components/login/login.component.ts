@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validator, FormBuilder, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,18 +9,27 @@ import {FormGroup, FormControl, Validator, FormBuilder, Validators} from '@angul
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  // isLoading = false;
+  // private authStatusSub: Subscription;
+
+  constructor(private fb: FormBuilder, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
+
+    // this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+    //   authStatus => {
+    //     this.isLoading = false;
+    //   }
+    // );
   }
   onSubmit(){
-    console.log(this.loginForm);
+    this.authService.login(this.username.value, this.password.value);
   }
   get username() {
     return this.loginForm.get('username');

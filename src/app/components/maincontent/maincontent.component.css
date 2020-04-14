@@ -1,0 +1,9 @@
+.navbar{
+  padding: 20px;
+}
+
+
+.itemView{
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,90 @@
+<ul nz-menu nzMode="inline">
+  <li nz-submenu nzTitle="Product Type" nzOpen>
+    <ul>
+      <li class="yearsSelector">
+        <span>Model year:</span>
+        <nz-input-number [(ngModel)]="startYear" [nzSize]="'small'" [nzMin]="1900" [nzMax]="2300" [nzStep]="1"></nz-input-number>
+        <p style="margin-top: 15px">---</p>
+        <nz-input-number [(ngModel)]="endYear" [nzSize]="'small'" [nzMin]="1900" [nzMax]="2300" [nzStep]="1"></nz-input-number>
+      </li>
+
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Technical Specifications" nzOpen>
+    <ul>
+      <li>
+        <div>
+          <nz-row>
+            <nz-col>
+              <div class="description">Airflow(CFM)</div>
+            </nz-col>
+          </nz-row>
+        </div>
+        <div>
+          <nz-row>
+            <nz-col nzSpan="3">
+              <nz-input-number class="sliderInput"
+                               [ngStyle]="{ marginRight: '5px' }"
+                               [nzSize]="'small'"
+                               [nzStep]="100"
+                               [(ngModel)]="rangeValue[0]"
+              ></nz-input-number>
+            </nz-col>
+            <nz-col nzSpan="10" nzPush="4">
+              <nz-slider [nzMin]="min" [nzMax]="max" [nzStep]="1" [(ngModel)]="rangeValue" nzRange></nz-slider>
+            </nz-col>
+            <nz-col nzSpan="3" nzPush="4">
+              <nz-input-number class="sliderInput"
+                               [ngStyle]="{ marginLeft: '5px' }"
+                               [nzSize]="'small'"
+                               [nzStep]="100"
+                               [(ngModel)]="rangeValue[1]"
+              ></nz-input-number>
+            </nz-col>
+          </nz-row>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Brand">
+    <ul>
+      <li nz-menu-item>Option 11</li>
+      <li nz-menu-item>Option 12</li>
+      <li nz-menu-item>Option 13</li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Past Selections">
+    <ul>
+      <li nz-menu-item>
+        <nz-row>
+          <nz-col nzSpan="4" nzPull="5">
+            <nz-input-number class="sliderInput"
+                             [ngStyle]="{ marginRight: '5px' }"
+                             [nzSize]="'small'"
+                             [nzStep]="100"
+                             [(ngModel)]="rangeValue[0]"
+            ></nz-input-number>
+          </nz-col>
+          <nz-col nzSpan="12">
+            <nz-slider [nzMin]="min" [nzMax]="max" [nzStep]="1" [(ngModel)]="rangeValue" nzRange></nz-slider>
+          </nz-col>
+          <nz-col nzSpan="4">
+            <nz-input-number class="sliderInput"
+                             [ngStyle]="{ marginLeft: '5px' }"
+                             [nzSize]="'small'"
+                             [nzStep]="100"
+                             [(ngModel)]="rangeValue[1]"
+            ></nz-input-number>
+          </nz-col>
+        </nz-row>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Certification">
+    <ul>
+      <li nz-menu-item>Option 11</li>
+      <li nz-menu-item>Option 12</li>
+      <li nz-menu-item>Option 13</li>
+    </ul>
+  </li>
+</ul>

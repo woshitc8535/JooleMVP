@@ -1,0 +1,27 @@
+[nz-menu] {
+  width: 280px;
+}
+
+
+.yearsSelector{
+  display: flex;
+  align-items: center;
+}
+
+
+nz-input-number{
+  width: 70px;
+  margin-left: 5px;
+  margin-right:5px;
+}
+span{
+  margin-left: 20px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.description{
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 110px;
+}
+
