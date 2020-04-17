@@ -12,33 +12,33 @@
   </li>
   <li nz-submenu nzTitle="Technical Specifications" nzOpen>
     <ul>
-      <li>
+      <li *ngFor="let item of ts">
         <div>
           <nz-row>
             <nz-col>
-              <div class="description">Airflow(CFM)</div>
+              <div class="description">{{item.filterName}}</div>
             </nz-col>
           </nz-row>
         </div>
         <div>
-          <nz-row>
+          <nz-row class="container">
             <nz-col nzSpan="3">
               <nz-input-number class="sliderInput"
                                [ngStyle]="{ marginRight: '5px' }"
                                [nzSize]="'small'"
-                               [nzStep]="100"
-                               [(ngModel)]="rangeValue[0]"
+                               [nzStep]="0.01"
+                               [(ngModel)]="item.filterRange[0]"
               ></nz-input-number>
             </nz-col>
             <nz-col nzSpan="10" nzPush="4">
-              <nz-slider [nzMin]="min" [nzMax]="max" [nzStep]="1" [(ngModel)]="rangeValue" nzRange></nz-slider>
+              <nz-slider [nzMin]="item.min" [nzMax]="item.max" [nzStep]="1" [(ngModel)]="item.filterRange" nzRange></nz-slider>
             </nz-col>
             <nz-col nzSpan="3" nzPush="4">
               <nz-input-number class="sliderInput"
                                [ngStyle]="{ marginLeft: '5px' }"
                                [nzSize]="'small'"
                                [nzStep]="100"
-                               [(ngModel)]="rangeValue[1]"
+                               [(ngModel)]="item.filterRange[1]"
               ></nz-input-number>
             </nz-col>
           </nz-row>
@@ -55,28 +55,37 @@
   </li>
   <li nz-submenu nzTitle="Past Selections">
     <ul>
-      <li nz-menu-item>
-        <nz-row>
-          <nz-col nzSpan="4" nzPull="5">
-            <nz-input-number class="sliderInput"
-                             [ngStyle]="{ marginRight: '5px' }"
-                             [nzSize]="'small'"
-                             [nzStep]="100"
-                             [(ngModel)]="rangeValue[0]"
-            ></nz-input-number>
-          </nz-col>
-          <nz-col nzSpan="12">
-            <nz-slider [nzMin]="min" [nzMax]="max" [nzStep]="1" [(ngModel)]="rangeValue" nzRange></nz-slider>
-          </nz-col>
-          <nz-col nzSpan="4">
-            <nz-input-number class="sliderInput"
-                             [ngStyle]="{ marginLeft: '5px' }"
-                             [nzSize]="'small'"
-                             [nzStep]="100"
-                             [(ngModel)]="rangeValue[1]"
-            ></nz-input-number>
-          </nz-col>
-        </nz-row>
+      <li *ngFor="let item of ps">
+        <div>
+          <nz-row>
+            <nz-col>
+              <div class="description">{{item.filterName}}</div>
+            </nz-col>
+          </nz-row>
+        </div>
+        <div>
+          <nz-row>
+            <nz-col nzSpan="3">
+              <nz-input-number class="sliderInput"
+                               [ngStyle]="{ marginRight: '5px' }"
+                               [nzSize]="'small'"
+                               [nzStep]="0.01"
+                               [(ngModel)]="item.filterRange[0]"
+              ></nz-input-number>
+            </nz-col>
+            <nz-col nzSpan="10" nzPush="4">
+              <nz-slider [nzMin]="item.min" [nzMax]="item.max" [nzStep]="1" [(ngModel)]="item.filterRange" nzRange></nz-slider>
+            </nz-col>
+            <nz-col nzSpan="3" nzPush="4">
+              <nz-input-number class="sliderInput"
+                               [ngStyle]="{ marginLeft: '5px' }"
+                               [nzSize]="'small'"
+                               [nzStep]="100"
+                               [(ngModel)]="item.filterRange[1]"
+              ></nz-input-number>
+            </nz-col>
+          </nz-row>
+        </div>
       </li>
     </ul>
   </li>

@@ -1,5 +1,5 @@
 [nz-menu] {
-  width: 280px;
+  width: 300px;
 }
 
 
@@ -22,6 +22,8 @@ span{
 .description{
   font-size: 10px;
   font-weight: bold;
-  margin-left: 110px;
+}
+.description{
+  margin-left: 90px;
 }
 

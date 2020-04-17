@@ -4,7 +4,7 @@
       Mechanical
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
-      <a>HVAC Fans</a>
+      <a>{{project}}</a>
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
       An Application
@@ -15,7 +15,7 @@
 <div>
   <ul>
     <li class="itemView">
-      <app-itemview *ngFor="let item of itemList"></app-itemview>
+      <app-itemview *ngFor="let item of projects" [project]="item"></app-itemview>
     </li>
   </ul>
 </div>

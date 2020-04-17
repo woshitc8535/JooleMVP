@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HomeService} from '../../services/home.service';
+import {Item} from '../../models/item';
 
 @Component({
   selector: 'app-maincontent',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./maincontent.component.css']
 })
 export class MaincontentComponent implements OnInit {
-  itemList = [1, 2, 3, 4, 5];
-  constructor() { }
+  public projects: Item[];
+  private project: string;
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.project = this.homeService.searchItem;
+    this.projects = this.homeService.products.filter(item => {
+        // return Object.values(item)[1] === this.project;
+      return item.productType === this.project;
+      }
+    );
+    console.log(this.projects);
   }
-
 }

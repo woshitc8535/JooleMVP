@@ -1,7 +1,13 @@
 <div class="item">
   <nz-card style="width:280px;" [nzCover]="coverTemplate" [nzActions]="[actionCheck, actionButton]">
     <div class="text">
-      <div>{{manufacturer}}</div><div>{{series}}</div><div>{{model}}</div><div>5000cfm</div><div>max speed</div><div>c</div><div>d</div>
+      <div>{{project.manufacturer}}</div>
+      <div>{{project.series}}</div>
+      <div>{{project.model}}</div>
+      <div>{{project.airflow}} CFM</div>
+      <div>{{project.powerMax}} at max speed</div>
+      <div>{{project.fanSpeedMax}} at max speed</div>
+      <div>{{project.fanSweepDiameter}}'' fan sweep diameter</div>
     </div>
   </nz-card>
   <ng-template #coverTemplate>

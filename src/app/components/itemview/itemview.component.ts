@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import {HomeService} from '../../services/home.service';
+import {Item} from '../../models/item';
 
 @Component({
   selector: 'app-itemview',
@@ -8,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class ItemviewComponent implements OnInit {
   selected = false;
   checked = false;
-  manufacturer = 'Big Ass';
-  series = 'Haiku H';
-  model = 'S3150-S0-BC-04-01-C-0';
+  @Input() project: Item;
 
-  constructor() { }
+
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

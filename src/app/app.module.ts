@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
 import {HeaderComponent} from './components/header/header.component';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './guards/auth-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
@@ -45,6 +45,7 @@ registerLocaleData(en);
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,

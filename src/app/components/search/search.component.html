@@ -1,10 +1,3 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <img src="assets/images/logo.png">
 <br>
 <br>
@@ -12,15 +5,15 @@
 <br>
 <br>
 <div class="searchBar">
-  <nz-select [ngModel]="'Zhejiang'">
-    <nz-option [nzLabel]="'Zhejiang'" [nzValue]="'Zhejiang'"></nz-option>
-    <nz-option [nzLabel]="'Jiangsu'" [nzValue]="'Jiangsu'"></nz-option>
+  <nz-select [ngModel]="'Mechanical'">
+    <nz-option [nzLabel]="'Mechanical'" [nzValue]="'Mechanical'"></nz-option>
+    <nz-option [nzLabel]="'Something'" [nzValue]="'Something'"></nz-option>
   </nz-select>
   <nz-input-group nzSearch nzSize="default" [nzAddOnAfter]="suffixIconSearch">
     <nz-select class="searchInput"
       nzShowSearch
       nzServerSearch
-      nzPlaceHolder="input search text"
+      nzPlaceHolder="Search"
       [(ngModel)]="selectedValue"
       [nzShowArrow]="false"
       [nzFilterOption]="nzFilterOption"
@@ -30,6 +23,7 @@
     </nz-select>
   </nz-input-group>
   <ng-template #suffixIconSearch>
-    <i nz-icon nzType="search"></i>
+    <i nz-icon nzType="search" (click)="toHomePage()"></i>
   </ng-template>
 </div>
+

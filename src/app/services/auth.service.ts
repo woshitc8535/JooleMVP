@@ -58,7 +58,7 @@ export class AuthService{
     const authData: User = {username, password};
     // console.log(username, password, 'Basic ' + btoa(username + ':' + password), btoa(username + ':' + password));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(username + ':' + password)});
-    this.http.post<{token: string, username: string}>(BACKEND_URL + 'login', authData, {headers}).subscribe(
+    this.http.get<{token: string, username: string}>(BACKEND_URL + 'login',  {headers}).subscribe(
       response => {
         const token = response.token;
         this.token = token;

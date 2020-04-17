@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Item} from '../../models/item';
+import {Router} from '@angular/router';
+import {HomeService} from '../../services/home.service';
 
 @Component({
   selector: 'app-mainheader',
@@ -7,25 +10,35 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./mainheader.component.css']
 })
 export class MainheaderComponent{
-
+  products: Item[];
   selectedValue = null;
   listOfOption: Array<{ value: string; text: string }> = [];
   nzFilterOption = () => true;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router, private homeService: HomeService) {}
 
   search(value: string): void {
     this.httpClient
-      .jsonp<{ result: Array<[string, string]> }>(`https://suggest.taobao.com/sug?code=utf-8&q=${value}`, 'callback')
+      .get<[Item]>(`http://localhost:8080/search?productType=${value.toLowerCase()}`)
       .subscribe(data => {
         const listOfOption: Array<{ value: string; text: string }> = [];
-        data.result.forEach(item => {
+        console.log(data);
+        data.forEach(item => {
+          console.log(Object.keys(item), Object.values(item));
           listOfOption.push({
-            value: item[0],
-            text: item[0]
+            value: Object.values(item)[1],
+            text:  Object.values(item)[1]
           });
+          this.products = data;
         });
         this.listOfOption = listOfOption;
       });
+  }
+  toHomePage(){
+    this.router.navigate(['/detail']);
+    console.log(this.products);
+    console.log(this.selectedValue);
+    this.homeService.products = this.products;
+    this.homeService.searchItem = this.selectedValue;
   }
 
 }
