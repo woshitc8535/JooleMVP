@@ -25,3 +25,13 @@ nz-input-group{
 .searchInput{
   width: 500px;
 }
+.logout{
+  flex-grow: 1;
+  align-self: flex-end;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  text-align: right;
+  padding-right: 30px;
+  font-size: 1.7em;
+  font-weight: bold;
+}

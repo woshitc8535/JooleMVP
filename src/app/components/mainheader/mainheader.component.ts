@@ -41,4 +41,17 @@ export class MainheaderComponent{
     this.homeService.searchItem = this.selectedValue;
   }
 
+  unique(arr){
+    const unique = {};
+    // tslint:disable-next-line:only-arrow-functions
+    arr.forEach(function(item){
+      unique[JSON.stringify(item)] = item;
+    });
+    // tslint:disable-next-line:only-arrow-functions
+    arr = Object.keys(unique).map(function(u){
+      return JSON.parse(u);
+    });
+    return arr;
+  }
+
 }

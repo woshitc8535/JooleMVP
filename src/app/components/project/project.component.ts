@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Item} from '../../models/item';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-project',
@@ -19,9 +21,12 @@ export class ProjectComponent implements OnInit {
     'Patented LED light module (optional) seamlessly integrates with the body of the fan',
     'Made in the U.S.A.'
   ];
-  constructor() { }
+
+  public item: Item;
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.item = this.productService.item;
+    console.log(this.item);
   }
-
 }

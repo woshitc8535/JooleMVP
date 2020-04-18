@@ -2,6 +2,9 @@
   width: 300px;
 }
 
+[nz-radio-button] {
+  width: 150px;
+}
 
 .yearsSelector{
   display: flex;
@@ -25,5 +28,51 @@ span{
 }
 .description{
   margin-left: 90px;
+}
+
+button{
+  width: 50px;
+  height: 25px;
+  font-size: 10px;
+  text-align: center;
+  margin-left: 30px;
+  padding: 3px;
+}
+
+.bubble {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: 4px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #e0e0eb
+}
+
+.des {
+  border-style: solid;
+  border-width: 3px;
+  border-color: #595959;
+  background: gray;
+}
+
+.bubbleLable {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.bubbleRadio {
+  display: inline-block;
+  width: 100px;
+  padding: 10px;
+}
+
+.bubbleOther {
+  display: inline-block;
+  width: 190px;
+  padding: 10px;
+  font-weight: bold;
 }
 

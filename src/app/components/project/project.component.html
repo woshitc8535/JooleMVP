@@ -45,23 +45,29 @@
     <div class="summary">
       <div>
         <nz-descriptions nzTitle="DESCRIPTION" nzBordered>
-          <nz-descriptions-item nzTitle="Manufacturer" [nzSpan]="3">Big Ass</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Series Mode" [nzSpan]="3">Haiku H</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Automatic Renewal"[nzSpan]="3">S3150-S0-BC-04-01-C-0</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Manufacturer" [nzSpan]="3">{{item.manufacturer}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Series Mode" [nzSpan]="3">H{{item.series}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Automatic Renewal"[nzSpan]="3">{{item.model}}</nz-descriptions-item>
         </nz-descriptions>
         <nz-descriptions nzTitle="TYPE" nzBordered>
-          <nz-descriptions-item nzTitle="Use Type" [nzSpan]="3">Commercial</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Indoor</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Roof</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Model year" [nzSpan]="3">2016</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Use Type" [nzSpan]="3">{{item.type}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">{{item.application}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Mounting Location" [nzSpan]="3">{{item.mountingLocation}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Accessories" [nzSpan]="3">{{item.accessories}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Model year" [nzSpan]="3">{{item.modelYear}}</nz-descriptions-item>
         </nz-descriptions>
       </div>
       <div>
         <nz-descriptions nzTitle="TECHNICAL SPECIFICATION" nzBordered>
-          <nz-descriptions-item nzTitle="Use Type" [nzSpan]="3">Commercial</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Indoor</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Application" [nzSpan]="3">Roof</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Model year" [nzSpan]="3">2016</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Airflow(CFM)" [nzSpan]="3">{{item.airflow}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Power(W)" [nzSpan]="3">Indoor</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Operating voltage (VAC)" [nzSpan]="3">Roof</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Fan speed (RPM)" [nzSpan]="3">2016</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Number of fan speeds" [nzSpan]="3">{{item.numberOfFanSpeeds}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Sound at max speed (dBA)" [nzSpan]="3">{{item.soundAtMaxSpeed}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Fan sweep diameters" [nzSpan]="3">{{item.fanSweepDiameter}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Height" [nzSpan]="3">Roof</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Weight" [nzSpan]="3">{{item.weight}}</nz-descriptions-item>
         </nz-descriptions>
       </div>
     </div>

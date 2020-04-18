@@ -12,3 +12,9 @@ nz-card-meta{
   justify-content: center;
   align-items: center;
 }
+
+img{
+  cursor: pointer;
+}
+
+

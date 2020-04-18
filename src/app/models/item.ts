@@ -30,5 +30,6 @@ export interface Item {
   fanSweepDiameter: string;
   heightMin: string;
   heightMax: string;
-  Weight: string;
+  weight: string;
+  url: string;
 }

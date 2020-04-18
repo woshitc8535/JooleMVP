@@ -3,6 +3,7 @@ import {HttpClient, HttpClientJsonpModule} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {HomeService} from '../../services/home.service';
 import {Item} from '../../models/item';
+import {AuthService} from '../../services/auth.service';
 
 
 
@@ -14,7 +15,8 @@ import {Item} from '../../models/item';
 
 
 
-export class SearchComponent{
+export class SearchComponent implements OnInit{
+  isAuthenticated = false;
   products: Item[];
   selectedValue = null;
   listOfOption: Array<{ value: string; text: string }> = [];
@@ -22,7 +24,13 @@ export class SearchComponent{
 
 
 
-  constructor(private httpClient: HttpClient, private router: Router, public homeService: HomeService) {}
+  constructor(private httpClient: HttpClient, private router: Router, public homeService: HomeService, public authService: AuthService) {}
+
+  ngOnInit() {
+    this.isAuthenticated = this.authService.getIsAuthenticated();
+    console.log(this.isAuthenticated);
+  }
+
 
   search(value: string): void {
       this.httpClient
@@ -38,7 +46,9 @@ export class SearchComponent{
             });
             this.products = data;
           });
-          this.listOfOption = listOfOption;
+          const set = new Set(listOfOption);
+          console.log(listOfOption);
+          this.listOfOption = this.unique(listOfOption);
         });
     }
     toHomePage(){
@@ -48,4 +58,17 @@ export class SearchComponent{
       this.homeService.products = this.products;
       this.homeService.searchItem = this.selectedValue;
     }
+
+    unique(arr){
+    const unique = {};
+      // tslint:disable-next-line:only-arrow-functions
+    arr.forEach(function(item){
+      unique[JSON.stringify(item)] = item;
+    });
+      // tslint:disable-next-line:only-arrow-functions
+    arr = Object.keys(unique).map(function(u){
+      return JSON.parse(u);
+    });
+    return arr;
+  }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,12 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input() isLoginPage: boolean;
   isAuthenticate = false;
-  isLogin = false;
+  isLoginState = false;
   private authListenerSub: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authListenerSub = this.authService
@@ -21,8 +23,4 @@ export class HeaderComponent implements OnInit {
         this.isAuthenticate = isAuthenticate;
       });
   }
-  changePage(){
-    this.isLogin = !this.isLogin;
-  }
-
 }

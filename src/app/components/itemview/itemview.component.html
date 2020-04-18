@@ -11,7 +11,7 @@
     </div>
   </nz-card>
   <ng-template #coverTemplate>
-    <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+    <img alt="example" [src]="project.url" (click)="toProductPage()"/>
   </ng-template>
   <ng-template #actionCheck>
     <label nz-checkbox [(ngModel)]="checked">Compare</label>

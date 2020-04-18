@@ -1,9 +1,8 @@
 <img src="assets/images/logo.png">
-
 <div class="searchBar">
-  <nz-select [ngModel]="'Zhejiang'">
-    <nz-option [nzLabel]="'Zhejiang'" [nzValue]="'Zhejiang'"></nz-option>
-    <nz-option [nzLabel]="'Jiangsu'" [nzValue]="'Jiangsu'"></nz-option>
+  <nz-select [ngModel]="'Mechanical'">
+    <nz-option [nzLabel]="'Mechanical'" [nzValue]="'Mechanical'"></nz-option>
+    <nz-option [nzLabel]="'Something'" [nzValue]="'Something'"></nz-option>
   </nz-select>
   <nz-input-group nzSearch nzSize="default" [nzAddOnAfter]="suffixIconSearch">
     <nz-select class="searchInput"
@@ -22,3 +21,7 @@
     <i nz-icon nzType="search"></i>
   </ng-template>
 </div>
+<div class="logout">
+  <a routerLink="/login" >logout</a>
+</div>
+

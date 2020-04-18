@@ -11,7 +11,15 @@ export class SidebarComponent implements OnInit {
   public startYear = 2000;
   public endYear = 2020;
   private project: string;
-  private projects: any[];
+  private projects: Item[];
+  public radioValue = 'Product'
+  public radioType = 'Commercial';
+  public radioApp = 'Indoor';
+  public radioML = 'Roof';
+  public radioAcc = 'With light';
+
+  isVisible = false;
+  isConfirmLoading = false;
 
 
   ts = [{filterName: 'Air flow (CFM)', filterRange: [2000, 10000], max: 10000, min: 2000},
@@ -31,5 +39,22 @@ export class SidebarComponent implements OnInit {
         return item.productType === this.project;
       }
     );
+    console.log(this.projects);
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    this.isConfirmLoading = true;
+    setTimeout(() => {
+      this.isVisible = false;
+      this.isConfirmLoading = false;
+    }, 3000);
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
   }
 }

@@ -1,5 +1,30 @@
+<div class="bubble">
+  <label>Search:</label>
+  <button nz-button nzType="default" nzDanger (click)="showModal()">Search</button>
+  <button nz-button nzType="danger" nzDanger>Clear</button>
+</div>
+<nz-radio-group [(ngModel)]="radioValue" nzButtonStyle="solid" nzSize="small" nzButtonStyle = solid>
+  <label nz-radio-button nzValue="Product">Product</label>
+  <label nz-radio-button nzValue="Project">Project</label>
+</nz-radio-group>
 <ul nz-menu nzMode="inline">
-  <li nz-submenu nzTitle="Product Type" nzOpen>
+  <li nz-submenu nzTitle="Product type">
+    <ul>
+      <li nz-menu-item>
+        <label>User Type</label>
+      </li>
+      <li nz-menu-item>
+        <label>Application</label>
+      </li>
+      <li nz-menu-item>
+        <label>Mounting Location</label>
+      </li>
+      <li nz-menu-item>
+        <label>Accessories</label>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Model year" nzOpen>
     <ul>
       <li class="yearsSelector">
         <span>Model year:</span>
@@ -48,12 +73,21 @@
   </li>
   <li nz-submenu nzTitle="Brand">
     <ul>
-      <li nz-menu-item>Option 11</li>
-      <li nz-menu-item>Option 12</li>
-      <li nz-menu-item>Option 13</li>
+      <li nz-menu-item>
+        <label>User Type</label>
+      </li>
+      <li nz-menu-item>
+        <label>Application</label>
+      </li>
+      <li nz-menu-item>
+        <label>Mounting Location</label>
+      </li>
+      <li nz-menu-item>
+        <label>Accessories</label>
+      </li>
     </ul>
   </li>
-  <li nz-submenu nzTitle="Past Selections">
+  <li nz-submenu nzTitle="Past Selections" nzOpen>
     <ul>
       <li *ngFor="let item of ps">
         <div>
@@ -97,3 +131,70 @@
     </ul>
   </li>
 </ul>
+
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()"
+  nzWidth="700px"
+>
+  <ng-template #modalTitle>
+    Find fans
+  </ng-template>
+
+  <ng-template #modalContent>
+    <div class="des">type</div>
+    <label class="bubbleLable">User Type</label>
+    <nz-radio-group [(ngModel)]="radioType">
+      <label class="bubbleRadio" nz-radio nzValue="Commercial">Commercial</label>
+      <label class="bubbleRadio"nz-radio nzValue="Industrial">Industrial</label>
+      <label class="bubbleRadio"nz-radio nzValue="Residential">Residential</label>
+    </nz-radio-group>
+    <br>
+    <label class="bubbleLable">Application</label>
+    <nz-radio-group [(ngModel)]="radioApp">
+      <label class="bubbleRadio"nz-radio nzValue="Indoor">Indoor</label>
+      <label class="bubbleRadio"nz-radio nzValue="OutDoor">OutDoor</label>
+    </nz-radio-group>
+    <br>
+    <label class="bubbleLable">Mounting Location</label>
+    <nz-radio-group [(ngModel)]="radioML">
+      <label class="bubbleRadio"nz-radio nzValue="Roof">Roof</label>
+      <label class="bubbleRadio"nz-radio nzValue="Wall">Wall</label>
+      <label class="bubbleRadio"nz-radio nzValue="Free Standing">Free Standing</label>
+    </nz-radio-group>
+    <br>
+    <label class="bubbleLable">Accessories</label>
+    <nz-radio-group [(ngModel)]="radioAcc">
+    <label class="bubbleRadio"nz-radio nzValue="With light">With light</label>
+    <label class="bubbleRadio"nz-radio nzValue="With out light">With out light</label>
+    </nz-radio-group>
+    <br>
+    <label class="bubbleOther">Model year</label>
+    <nz-input-number style="margin-left: 100px" [(ngModel)]="startYear" [nzSize]="'small'" [nzMin]="1900" [nzMax]="2300" [nzStep]="1"></nz-input-number>
+    <span>——</span>
+    <nz-input-number [(ngModel)]="endYear" [nzSize]="'small'" [nzMin]="1900" [nzMax]="2300" [nzStep]="1"></nz-input-number>
+    <br>
+    <div class="des">Technical Details</div>
+    <ul style="list-style: none; padding: 0px; margin: 0px">
+      <li *ngFor="let item of ts">
+        <label class="bubbleOther">{{item.filterName}}</label>
+        <nz-input-number style="margin-left: 100px" [(ngModel)]="item.filterRange[0]" [nzSize]="'small'" [nzMin]="item.min" [nzMax]="item.max" [nzStep]="1"></nz-input-number>
+        <span>——</span>
+        <nz-input-number [(ngModel)]="item.filterRange[1]" [nzSize]="'small'" [nzMin]="item.min" [nzMax]="item.max" [nzStep]="1"></nz-input-number>
+      </li>
+    </ul>
+    <br>
+    <div class="des">Brand</div>
+    <label class="bubbleOther">Select Brand</label>      <br>
+    <div class="des">Other</div>
+    <label class="bubbleOther">With the words</label>      <br>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Search</button>
+  </ng-template>
+</nz-modal>

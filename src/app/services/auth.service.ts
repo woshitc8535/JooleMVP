@@ -28,13 +28,6 @@ export class AuthService{
     return this.isAuthenticated;
   }
 
-  getTokenTime() {
-    return this.tokenTime;
-  }
-
-  getUserId() {
-    return this.username;
-  }
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
@@ -66,6 +59,7 @@ export class AuthService{
         // console.log(token);
         if (token) {
           this.isAuthenticated = true;
+          console.log('getAuthenticated');
           this.authStatusListener.next(true);
           this.saveAuthData(token, username);
           this.router.navigate(['/search']);
@@ -74,6 +68,7 @@ export class AuthService{
       () => {
         this.authStatusListener.next(false);
         console.log('failed login');
+        alert('Wrong username or password');
       }
     );
   }
@@ -88,11 +83,34 @@ export class AuthService{
 
   private saveAuthData(token: string, username: string) {
     localStorage.setItem('token', token);
-    localStorage.setItem('username', token);
+    localStorage.setItem('username', username);
   }
 
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+  }
+
+  autoAuthUser() {
+    const authInfo = this.getAutoData();
+    if (!authInfo) {
+      return ;
+    }
+    this.isAuthenticated = true;
+    this.token = authInfo.token;
+    this.username = this.username;
+    this.authStatusListener.next(true);
+  }
+
+  getAutoData() {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('username');
+    if (!token) {
+      return;
+    }
+    return {
+            token,
+            userId
+    };
   }
 }

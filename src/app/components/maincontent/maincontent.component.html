@@ -1,10 +1,10 @@
 <div class="navbar">
-  <nz-breadcrumb>
+  <nz-breadcrumb >
     <nz-breadcrumb-item>
       Mechanical
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
-      <a>{{project}}</a>
+      <a [routerLink]="['/detail']">{{project}}</a>
     </nz-breadcrumb-item>
     <nz-breadcrumb-item>
       An Application
@@ -15,7 +15,7 @@
 <div>
   <ul>
     <li class="itemView">
-      <app-itemview *ngFor="let item of projects" [project]="item"></app-itemview>
+      <app-itemview *ngFor="let item of projects let key = index" [project]="item" [index]="key" [projects]="projects"></app-itemview>
     </li>
   </ul>
 </div>

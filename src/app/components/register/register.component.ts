@@ -9,6 +9,7 @@ import {AuthService} from '../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup
+  isLoginPage = false;
 
   constructor(private fb: FormBuilder, public authService: AuthService) { }
 
