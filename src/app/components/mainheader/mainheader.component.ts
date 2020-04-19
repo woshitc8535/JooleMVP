@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Item} from '../../models/item';
 import {Router} from '@angular/router';
 import {HomeService} from '../../services/home.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-mainheader',
@@ -14,7 +15,8 @@ export class MainheaderComponent{
   selectedValue = null;
   listOfOption: Array<{ value: string; text: string }> = [];
   nzFilterOption = () => true;
-  constructor(private httpClient: HttpClient, private router: Router, private homeService: HomeService) {}
+  constructor(private httpClient: HttpClient, private router: Router, private homeService: HomeService) {
+  }
 
   search(value: string): void {
     this.httpClient
@@ -53,5 +55,4 @@ export class MainheaderComponent{
     });
     return arr;
   }
-
 }

@@ -1,16 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HomeService} from '../../services/home.service';
 import {Item} from '../../models/item';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-maincontent',
   templateUrl: './maincontent.component.html',
   styleUrls: ['./maincontent.component.css']
 })
-export class MaincontentComponent implements OnInit {
+export class MaincontentComponent implements OnInit, OnChanges {
   public projects: Item[];
   public project: string;
-  constructor(private homeService: HomeService) { }
+  subscription: Subscription;
+
+  constructor(private homeService: HomeService) {
+    this.subscription = this.homeService.getProductsListener().subscribe( products => {
+      if (products) {
+        this.projects = products;
+        console.log(this.projects);
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.project = this.homeService.searchItem;
@@ -18,5 +32,8 @@ export class MaincontentComponent implements OnInit {
       return item.productType === this.project;
       }
     );
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 }

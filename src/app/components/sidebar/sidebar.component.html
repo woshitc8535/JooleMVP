@@ -1,7 +1,7 @@
 <div class="bubble">
   <label>Search:</label>
   <button nz-button nzType="default" nzDanger (click)="showModal()">Search</button>
-  <button nz-button nzType="danger" nzDanger>Clear</button>
+  <button nz-button nzType="danger" nzDanger (click)="reset()">Clear</button>
 </div>
 <nz-radio-group [(ngModel)]="radioValue" nzButtonStyle="solid" nzSize="small" nzButtonStyle = solid>
   <label nz-radio-button nzValue="Product">Product</label>

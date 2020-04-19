@@ -9,7 +9,7 @@ import {AuthService} from './services/auth.service';
 export class AppComponent implements OnInit{
   title = 'JooleMVP';
 
-  constructor(private authService: AuthService){};
+  constructor(private authService: AuthService){}
   ngOnInit(): void {
     this.authService.autoAuthUser();
   }
