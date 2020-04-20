@@ -23,6 +23,10 @@ export class ProjectComponent implements OnInit {
   ];
 
   public item: Item;
+
+  scrollContainer = document.getElementById('sc-container');
+
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {

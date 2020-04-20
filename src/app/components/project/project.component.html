@@ -32,7 +32,7 @@
     <button class="btn">Add to</button>
   </div>
 </div>
-<nz-anchor>
+<nz-anchor [nzContainer]="scrollContainer">
   <div class="nav">
     <nz-link nzHref="#Product-Summary" nzTitle="Product Summary"></nz-link>
     <nz-link nzHref="#Product-Details" nzTitle="Product Details"></nz-link>
@@ -40,7 +40,7 @@
     <nz-link nzHref="#contact" nzTitle="Contact"></nz-link>
   </div>
 </nz-anchor>
-<div class="scrollable-container">
+<div id="sc-container" class="scrollable-container">
   <div class="background">
     <p id="Product-Summary">Product Summary</p>
     <div class="summary">
