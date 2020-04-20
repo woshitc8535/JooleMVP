@@ -1,9 +1,9 @@
 <div class="item">
   <nz-card style="width:280px;" [nzCover]="coverTemplate" [nzActions]="[actionCheck, actionButton]">
     <div class="text">
-      <div>{{project.manufacturer}}</div>
-      <div>{{project.series}}</div>
-      <div>{{project.model}}</div>
+      <div style="font-weight: bold">{{project.manufacturer}}</div>
+      <div style="font-weight: bold">{{project.series}}</div>
+      <div style="font-weight: bold">{{project.model}}</div>
       <div>{{project.airflow}} CFM</div>
       <div>{{project.powerMax}} at max speed</div>
       <div>{{project.fanSpeedMax}} at max speed</div>
@@ -14,7 +14,7 @@
     <img alt="example" [src]="project.url" (click)="toProductPage()"/>
   </ng-template>
   <ng-template #actionCheck>
-    <label nz-checkbox [(ngModel)]="checked">Compare</label>
+    <label nz-checkbox [(ngModel)]="checked" (nzCheckedChange)="addToCompare()">Compare</label>
   </ng-template>
   <ng-template #actionButton>
    <button>Add to</button>

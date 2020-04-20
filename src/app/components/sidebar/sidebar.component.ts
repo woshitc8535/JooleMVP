@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HomeService} from '../../services/home.service';
 import {Item} from '../../models/item';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,8 +9,11 @@ import {Item} from '../../models/item';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  private project: string;
+  public editState = [false, false, false];
   private projects: Item[];
+  private project;
+
+  public proList = ['Project1', 'Project2', 'Project3'];
 
   public startYear = 2000;
   public endYear = 2020;
@@ -32,14 +36,20 @@ export class SidebarComponent implements OnInit {
 
 
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.project = this.homeService.searchItem;
-    this.projects = this.homeService.products.filter(item => {
-        return item.productType === this.project;
-      }
-    );
+    if (this.homeService.products && this.homeService.searchItem) {
+      this.project = this.homeService.searchItem;
+      this.projects = this.homeService.products.filter(item => {
+          return item.productType === this.project;
+        }
+      );
+    }
+    else {
+      this.project = sessionStorage.getItem('searchItem');
+      this.projects = JSON.parse(sessionStorage.getItem('productList'));
+    }
     console.log(this.projects);
   }
 
@@ -69,6 +79,10 @@ export class SidebarComponent implements OnInit {
 
     this.ps = [{filterName: 'Firm', filterRange: [0, 10], max: 10, min: 0},
       {filterName: 'Global', filterRange: [0, 1492], max: 1492, min: 0}];
+
+
+    this.homeService.products = JSON.parse(sessionStorage.getItem('productList'));
+    this.homeService.send();
   }
 
   filterPro() {
@@ -84,5 +98,26 @@ export class SidebarComponent implements OnInit {
       && item.accessories === this.radioAcc && item.mountingLocation === this.radioML;
     });
     console.log(this.homeService.products);
+  }
+
+  addProject() {
+    this.proList.push('project' + (this.proList.length + 1).toString());
+    this.editState.push(false);
+  }
+  deleteProject(key) {
+    this.proList.splice(key, 1);
+    this.editState.splice(key, 1);
+  }
+  deleteAll() {
+    this.proList = [];
+    this.editState = [];
+  }
+
+  editPro(key) {
+    this.editState[key] = !this.editState[key];
+  }
+
+  navigateToCompare() {
+    this.router.navigate(['/compare']);
   }
 }

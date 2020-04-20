@@ -60,9 +60,9 @@
       <div>
         <nz-descriptions nzTitle="TECHNICAL SPECIFICATION" nzBordered>
           <nz-descriptions-item nzTitle="Airflow(CFM)" [nzSpan]="3">{{item.airflow}}</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Power(W)" [nzSpan]="3">Indoor</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Operating voltage (VAC)" [nzSpan]="3">Roof</nz-descriptions-item>
-          <nz-descriptions-item nzTitle="Fan speed (RPM)" [nzSpan]="3">2016</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Power(W)" [nzSpan]="3">{{item.mountingLocation}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Operating voltage (VAC)" [nzSpan]="3">{{item.operatingVoltageMax}}</nz-descriptions-item>
+          <nz-descriptions-item nzTitle="Fan speed (RPM)" [nzSpan]="3">{{item.fanSpeedMax}}</nz-descriptions-item>
           <nz-descriptions-item nzTitle="Number of fan speeds" [nzSpan]="3">{{item.numberOfFanSpeeds}}</nz-descriptions-item>
           <nz-descriptions-item nzTitle="Sound at max speed (dBA)" [nzSpan]="3">{{item.soundAtMaxSpeed}}</nz-descriptions-item>
           <nz-descriptions-item nzTitle="Fan sweep diameters" [nzSpan]="3">{{item.fanSweepDiameter}}</nz-descriptions-item>

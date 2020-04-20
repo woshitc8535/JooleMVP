@@ -23,6 +23,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MaincontentComponent } from './components/maincontent/maincontent.component';
 import { ItemviewComponent } from './components/itemview/itemview.component';
 import { ProjectComponent } from './components/project/project.component';
+import { CompareComponent } from './components/compare/compare.component';
+import { ComparelistComponent } from './components/comparelist/comparelist.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 registerLocaleData(en);
 
@@ -38,7 +41,9 @@ registerLocaleData(en);
     SidebarComponent,
     MaincontentComponent,
     ItemviewComponent,
-    ProjectComponent
+    ProjectComponent,
+    CompareComponent,
+    ComparelistComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ registerLocaleData(en);
     MatAutocompleteModule,
     MatFormFieldModule,
     NgZorroAntdModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

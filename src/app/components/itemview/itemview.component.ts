@@ -15,7 +15,9 @@ export class ItemviewComponent implements OnInit {
   @Input() project: Item;
   @Input() index: number;
   @Input() projects: Item[];
-  url: string
+  url: string;
+
+  public itemList: Item[];
 
 
 
@@ -24,10 +26,28 @@ export class ItemviewComponent implements OnInit {
   ngOnInit(): void {
     this.productService.item = this.project;
     this.url = this.project.url;
+    console.log(this.project);
   }
 
   toProductPage(){
-    this.productService.item = this.projects[this.index]
+    this.productService.item = this.projects[this.index];
     this.router.navigate(['/project']);
+  }
+
+  addToCompare() {
+    if (this.checked) {
+      this.itemList = JSON.parse( sessionStorage.getItem('compareList'));
+      console.log(this.itemList);
+      this.itemList.push(this.project);
+      sessionStorage.setItem('compareList', JSON.stringify(this.itemList));
+    }
+    else {
+      this.itemList = JSON.parse( sessionStorage.getItem('compareList'));
+      this.itemList = this.itemList.filter(item => {
+        console.log(item.manufacturer !== this.project.manufacturer);
+        return item.manufacturer !== this.project.manufacturer;
+      })
+      sessionStorage.setItem('compareList', JSON.stringify(this.itemList));
+    }
   }
 }

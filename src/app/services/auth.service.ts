@@ -67,8 +67,8 @@ export class AuthService{
       },
       () => {
         this.authStatusListener.next(false);
-        console.log('failed login');
-        alert('Wrong username or password');
+        // console.log('failed login');
+        // alert('Wrong username or password');
       }
     );
   }
