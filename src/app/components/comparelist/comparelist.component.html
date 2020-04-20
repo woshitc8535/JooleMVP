@@ -1,0 +1,37 @@
+<div style="margin-left: 220px">
+  <img *ngFor="let item of itemList" src="{{item.url}}">
+</div>
+<div>
+   <thead>
+   <tr>
+     <th>Description</th>
+     <th *ngFor="let item of listOfIndexDes" style="background: #cccccc">{{item}}</th>
+     <th>TYPE</th>
+     <th *ngFor="let item of listOfIndexType" style="background: #cccccc">{{item}}</th>
+     <th>TECHNICAL SPECIFICATIONS</th>
+     <th *ngFor="let item of listOfIndexTS" style="background: #cccccc">{{item}}</th>
+   </tr>
+   </thead>
+   <nz-table [nzData]="itemList" [nzFrontPagination]="false" [nzShowPagination]="false">
+     <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+     <tr *ngFor="let data of itemList" cdkDrag>
+       <td style="padding-top: 36.444px"></td>
+       <td>{{ data.manufacturer }}</td>
+       <td>{{ data.series }}</td>
+       <td>{{ data.model }}</td>
+       <td style="height: 53.56px"></td>
+       <td>{{ data.type }}</td>
+       <td>{{ data.application }}</td>
+       <td>{{ data.mountingLocation }}</td>
+       <td>{{ data.accessories }}</td>
+       <td>{{ data.modelYear }}</td>
+       <td style="height: 53.56px"></td>
+       <td>{{ data.airflow }}</td>
+       <td>{{ data.powerMax }}</td>
+       <td>{{ data.operatingVoltageMax}}</td>
+       <td>{{data.fanSpeedMax}}</td>
+     </tr>
+     </tbody>
+   </nz-table>
+ </div>
+

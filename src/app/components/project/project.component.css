@@ -7,7 +7,7 @@
   font-size: 20px;
 }
 
-img{
+.imgPro{
   height: 40px;
   width: 80px;
   padding: 5px;
@@ -27,6 +27,7 @@ nz-breadcrumb{
 
 .scrollable-container {
   height: 500px;
+  overflow-y: auto;
 }
 
 .background {
@@ -56,4 +57,19 @@ p{
 
 .nav{
   display: flex;
+}
+.iconGroup {
+  display: flex;
+  overflow: auto;
+}
+
+.imgIcon {
+  height: 40px;
+  width: 40px;
+}
+
+.imgGrop {
+  display: flex;
+  padding: 30px;
+  margin-left: 100px;
 }

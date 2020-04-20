@@ -1,0 +1,13 @@
+<app-mainheader></app-mainheader>
+<nz-breadcrumb style="padding: 5px; margin-left: 10px">
+  <nz-breadcrumb-item>
+    Mechanical
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    <a [routerLink]="['/detail']" (click)="clearSession()">{{searchItem}}</a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    <a [routerLink]="['/compare']">Compare</a>
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+<app-comparelist></app-comparelist>

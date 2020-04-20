@@ -6,15 +6,15 @@
         Mechanical
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        <a>HVAC Fans</a>
+        <a [routerLink]="['/detail']" (click)="clearSession()">HVAC Fans</a>
       </nz-breadcrumb-item>
       <nz-breadcrumb-item>
-        An Application
+        {{item.model}}
       </nz-breadcrumb-item>
     </nz-breadcrumb>
   </div>
   <div class="subtitle">
-    <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png">
+    <img class="imgPro" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png">
     <div>
       <nz-breadcrumb>
         <nz-breadcrumb-item>
@@ -24,11 +24,11 @@
           HVAC Fans
         </nz-breadcrumb-item>
         <nz-breadcrumb-item>
-          An Application
+          {{item.model}}
         </nz-breadcrumb-item>
       </nz-breadcrumb>
     </div>
-    <div class="specification">Past specification</div>
+<!--    <div class="specification">Past specification</div>-->
     <button class="btn">Add to</button>
   </div>
 </div>
@@ -36,6 +36,7 @@
   <div class="nav">
     <nz-link nzHref="#Product-Summary" nzTitle="Product Summary"></nz-link>
     <nz-link nzHref="#Product-Details" nzTitle="Product Details"></nz-link>
+    <nz-link nzHref="#Product-Documentation" nzTitle="Product Documentation"></nz-link>
     <nz-link nzHref="#contact" nzTitle="Contact"></nz-link>
   </div>
 </nz-anchor>
@@ -71,6 +72,34 @@
         </nz-descriptions>
       </div>
     </div>
+    <p id="Product-Documentation">Product Documentation</p>
+    <div class="iconGroup">
+      <div class="imgGrop">
+        <a href="	https://storage.cloud.google.com/wliu-bucket/CSI%20.docx?folder&organizationId">
+          <img class="imgIcon" src="assets/images/word.png">
+        </a>
+        <p>CSI -Three Part Specification</p>
+      </div>
+      <div class="imgGrop">
+        <a>
+          <img class="imgIcon" src="assets/images/pdf.png">
+        </a>
+        <p>Submittal (PDF)</p>
+      </div>
+      <div class="imgGrop">
+        <a>
+          <img class="imgIcon" src="assets/images/word.png">
+        </a>
+        <p>Control Option</p>
+      </div >
+      <div class="imgGrop">
+        <a>
+          <img class="imgIcon" src="assets/images/pdf.png">
+        </a>
+        <p>Plan Views</p>
+      </div>
+    </div>
+
     <p id="Product-Details">Product Details</p>
     <div class="list">
 

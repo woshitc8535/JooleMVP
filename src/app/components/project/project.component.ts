@@ -26,7 +26,16 @@ export class ProjectComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.item = this.productService.item;
-    console.log(this.item);
+    if (this.productService.item) {
+      this.item = this.productService.item;
+      sessionStorage.setItem('currentItem', JSON.stringify(this.item));
+    }
+    else {
+      this.item = JSON.parse(sessionStorage.getItem('currentItem'));
+    }
+  }
+
+  clearSession() {
+    sessionStorage.removeItem('currentItem');
   }
 }
