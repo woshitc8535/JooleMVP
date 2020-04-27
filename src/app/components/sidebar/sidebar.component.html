@@ -16,9 +16,9 @@
 <ul *ngIf="radioValue =='Project'" nz-menu nzMode="inline">
   <li nz-submenu nzTitle="Project List">
     <ul>
-      <li *ngFor="let item of proList let key = index" nz-menu-item>
-        <div *ngIf="!editState[key]" style="display: inline; width: 100px">{{item}}</div>
-        <input *ngIf="editState[key]" [(ngModel)]="proList[key]" style="border: none; background: #E6F7FF">
+      <li *ngFor="let item of projectList let key = index" nz-menu-item (click)="loading(item, item.id)">
+        <div *ngIf="!editState[key]" style="display: inline; width: 100px">{{item.projectName}}</div>
+        <input *ngIf="editState[key]" [(ngModel)]="projectList[key].projectName" style="border: none; background: #E6F7FF">
         <i class="iconE" (click)="editPro(key)" nz-icon nzType="edit" nzTheme="outline"></i>
         <i class="iconD" (click)="deleteProject(key)" nz-icon nzType="delete" nzTheme="outline"></i>
       </li>
@@ -216,3 +216,8 @@
     <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Search</button>
   </ng-template>
 </nz-modal>
+
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" nzTitle="{{currentOrder}}" (nzOnClose)="close()">
+  <p *ngFor="let item of currentOrderItem"><i (click)="deleteCurrent(currentOrder.id, item.id)" nz-icon nzType="minus-square" nzTheme="twotone"></i>  {{item.product.series}}</p>
+
+</nz-drawer>

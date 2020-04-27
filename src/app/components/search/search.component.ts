@@ -34,15 +34,15 @@ export class SearchComponent implements OnInit{
 
   search(value: string): void {
       this.httpClient
-        .get<[Item]>(`http://localhost:8080/search?productType=${value.toLowerCase()}`)
+        .get<[Item]>(`http://localhost:8080/search?productType=${value}`)
         .subscribe(data => {
           const listOfOption: Array<{ value: string; text: string }> = [];
           console.log(data);
           data.forEach(item => {
             console.log(Object.keys(item), Object.values(item));
             listOfOption.push({
-              value: Object.values(item)[1],
-              text:  Object.values(item)[1]
+              value: Object.values(item)[2],
+              text:  Object.values(item)[2]
             });
             this.products = data;
           });

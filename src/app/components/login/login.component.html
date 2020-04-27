@@ -7,6 +7,8 @@
   <input type = "password" placeholder="Password" formControlName="password" required>
   <div *ngIf="!password.valid &&  (password.dirty || password.touched)">Invalid Password</div>
 
+<!--  <img id="captcha" src="'http://localhost:8080/kaptcha">-->
+
   <button nz-button type="submit" [disabled]="!loginForm.valid">Log In</button>
 </form>
 

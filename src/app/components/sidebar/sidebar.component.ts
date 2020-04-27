@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HomeService} from '../../services/home.service';
 import {Item} from '../../models/item';
 import {Router} from '@angular/router';
+import {Project} from '../../models/project';
+import {Subscription} from 'rxjs';
+import {Current} from '../../models/current';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,7 +16,8 @@ export class SidebarComponent implements OnInit {
   private projects: Item[];
   private project;
 
-  public proList = ['Project1', 'Project2', 'Project3'];
+  public proList: string[];
+  public projectList: Project[];
 
   public startYear = 2000;
   public endYear = 2020;
@@ -33,12 +37,31 @@ export class SidebarComponent implements OnInit {
 
   isVisible = false;
   isConfirmLoading = false;
+  visible = false;
+
+  currentOrder: Project;
+  currentOrderItem: Current[];
+
+  subscription: Subscription;
 
 
 
   constructor(private homeService: HomeService, private router: Router) { }
 
   ngOnInit(): void {
+    this.subscription = this.homeService.getCurrent().subscribe( currentItems => {
+      if (currentItems) {
+        this.currentOrderItem = currentItems;
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
+    this.projectList = this.homeService.getProject();
+    this.editState = Array(this.projectList.length).fill(false);
+    // console.log(this.projectList);
+
     if (this.homeService.products && this.homeService.searchItem) {
       this.project = this.homeService.searchItem;
       this.projects = this.homeService.products.filter(item => {
@@ -50,7 +73,7 @@ export class SidebarComponent implements OnInit {
       this.project = sessionStorage.getItem('searchItem');
       this.projects = JSON.parse(sessionStorage.getItem('productList'));
     }
-    console.log(this.projects);
+    // console.log(this.projects);
   }
 
   showModal(): void {
@@ -86,8 +109,8 @@ export class SidebarComponent implements OnInit {
   }
 
   filterPro() {
-    console.log(this.ts[0].filterRange[1]);
-    console.log( Number(this.projects[1].airflow) <= this.ts[0].filterRange[1]);
+    // console.log(this.ts[0].filterRange[1]);
+    // console.log( Number(this.projects[1].airflow) <= this.ts[0].filterRange[1]);
     this.homeService.products = this.projects.filter(item => {
       return Number(item.airflow) <= this.ts[0].filterRange[1] && Number(item.airflow) >= this.ts[0].filterRange[0]
       && Number(item.powerMax) <= this.ts[1].filterRange[1] && Number(item.powerMax) >= this.ts[1].filterRange[0]
@@ -97,20 +120,26 @@ export class SidebarComponent implements OnInit {
       && item.type === this.radioType && item.application === this.radioApp
       && item.accessories === this.radioAcc && item.mountingLocation === this.radioML;
     });
-    console.log(this.homeService.products);
+    // console.log(this.homeService.products);
   }
 
   addProject() {
-    this.proList.push('project' + (this.proList.length + 1).toString());
+    const curPro = new Project();
+    curPro.projectName = 'project' + (this.projectList.length + 1).toString();
+    this.homeService.addProject('project' + (this.projectList.length + 1).toString());
+    this.projectList = this.homeService.projects;
     this.editState.push(false);
   }
   deleteProject(key) {
-    this.proList.splice(key, 1);
+    const curPro = this.projectList[key];
+    this.homeService.deleteProject(curPro.id);
+    this.projectList.splice(key, 1);
     this.editState.splice(key, 1);
   }
   deleteAll() {
-    this.proList = [];
+    this.projectList = [];
     this.editState = [];
+    this.homeService.deleteAll();
   }
 
   editPro(key) {
@@ -119,5 +148,34 @@ export class SidebarComponent implements OnInit {
 
   navigateToCompare() {
     this.router.navigate(['/compare']);
+  }
+
+  open(): void {
+    this.visible = true;
+  }
+
+  loading(project, projectId) {
+    this.currentOrder = project;
+    this.homeService.getProductFromProject(projectId);
+    this.subscription = this.homeService.getCurrent().subscribe( currentItems => {
+      if (currentItems) {
+        this.currentOrderItem = currentItems;
+        console.log(this.currentOrderItem);
+        this.open();
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
+}
+
+  close(): void {
+    this.visible = false;
+  }
+
+  deleteCurrent(projectId: number, productId: number) {
+    this.homeService.deleteProductFromProject(projectId, productId);
+    console.log(this.currentOrder);
   }
 }

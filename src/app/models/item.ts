@@ -1,7 +1,9 @@
 export interface Item {
+  id: number;
+
   productType: string;
 
-  manufacturer: string
+  manufacturer: string;
 
   series: string;
 

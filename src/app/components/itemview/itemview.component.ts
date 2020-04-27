@@ -3,6 +3,8 @@ import {HomeService} from '../../services/home.service';
 import {Item} from '../../models/item';
 import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
+import {Project} from '../../models/project';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-itemview',
@@ -19,14 +21,27 @@ export class ItemviewComponent implements OnInit {
 
   public itemList: Item[];
 
+  public projectList: Project[];
+  subscription: Subscription;
 
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private  homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.projectList = this.homeService.projects;
     this.productService.item = this.project;
     this.url = this.project.url;
     console.log(this.project);
+
+    this.subscription = this.homeService.getProjectListener().subscribe( project => {
+      if (project) {
+        this.projectList = project;
+        return true;
+      }
+      else {
+        return false;
+      }
+    });
   }
 
   toProductPage(){
@@ -46,8 +61,12 @@ export class ItemviewComponent implements OnInit {
       this.itemList = this.itemList.filter(item => {
         console.log(item.manufacturer !== this.project.manufacturer);
         return item.manufacturer !== this.project.manufacturer;
-      })
+      });
       sessionStorage.setItem('compareList', JSON.stringify(this.itemList));
     }
+  }
+
+  addPrductToProject(projectId: number) {
+    this.homeService.addProductToProject(this.project.id, projectId);
   }
 }

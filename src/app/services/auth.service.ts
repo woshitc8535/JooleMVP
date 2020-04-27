@@ -9,17 +9,19 @@ import {User} from '../models/user.model';
 const BACKEND_URL = environment.apiUrl + '/users/';
 
 @Injectable({providedIn: 'root'})
-export class AuthService{
+export class AuthService {
   private isAuthenticated = false;
   private token;
   private tokenTime;
   private username;
   private authStatusListener = new Subject<boolean>();
   private errormessage: string;
-  constructor(private http: HttpClient, private router: Router){
+
+  constructor(private http: HttpClient, private router: Router) {
 
   }
-  getToken(){
+
+  getToken() {
     return this.token;
   }
 
@@ -51,7 +53,7 @@ export class AuthService{
     const authData: User = {username, password};
     // console.log(username, password, 'Basic ' + btoa(username + ':' + password), btoa(username + ':' + password));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(username + ':' + password)});
-    this.http.get<{token: string, username: string}>(BACKEND_URL + 'login',  {headers}).subscribe(
+    this.http.get<{ token: string, username: string }>(BACKEND_URL + 'login', {headers}).subscribe(
       response => {
         const token = response.token;
         this.token = token;
@@ -73,7 +75,7 @@ export class AuthService{
     );
   }
 
-  logout(){
+  logout() {
     this.token = null;
     this.isAuthenticated = false;
     this.username = null;
@@ -94,7 +96,7 @@ export class AuthService{
   autoAuthUser() {
     const authInfo = this.getAutoData();
     if (!authInfo) {
-      return ;
+      return;
     }
     this.isAuthenticated = true;
     this.token = authInfo.token;
@@ -109,8 +111,9 @@ export class AuthService{
       return;
     }
     return {
-            token,
-            userId
+      token,
+      userId
     };
   }
 }
+

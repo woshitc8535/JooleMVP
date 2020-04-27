@@ -17,7 +17,14 @@
     <label nz-checkbox [(ngModel)]="checked" (nzCheckedChange)="addToCompare()">Compare</label>
   </ng-template>
   <ng-template #actionButton>
-   <button>Add to</button>
+    <button nz-button nz-dropdown [nzDropdownMenu]="menu">Add to<i nz-icon nzType="down"></i></button>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li *ngFor="let item of projectList" nz-menu-item>
+          <a (click)="addPrductToProject(item.id)">{{item.projectName}}</a>
+        </li>
+      </ul>
+    </nz-dropdown-menu>
   </ng-template>
 </div>
 
