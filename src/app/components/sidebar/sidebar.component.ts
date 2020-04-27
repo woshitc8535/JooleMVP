@@ -39,7 +39,7 @@ export class SidebarComponent implements OnInit {
   isConfirmLoading = false;
   visible = false;
 
-  currentOrder: Project;
+  currentOrder: string;
   currentOrderItem: Current[];
 
   subscription: Subscription;
@@ -154,8 +154,8 @@ export class SidebarComponent implements OnInit {
     this.visible = true;
   }
 
-  loading(project, projectId) {
-    this.currentOrder = project;
+  loading(projectName, projectId) {
+    this.currentOrder = projectName;
     this.homeService.getProductFromProject(projectId);
     this.subscription = this.homeService.getCurrent().subscribe( currentItems => {
       if (currentItems) {

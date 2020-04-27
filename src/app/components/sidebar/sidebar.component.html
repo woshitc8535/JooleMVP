@@ -16,7 +16,7 @@
 <ul *ngIf="radioValue =='Project'" nz-menu nzMode="inline">
   <li nz-submenu nzTitle="Project List">
     <ul>
-      <li *ngFor="let item of projectList let key = index" nz-menu-item (click)="loading(item, item.id)">
+      <li *ngFor="let item of projectList let key = index" nz-menu-item (click)="loading(item.projectName, item.id)">
         <div *ngIf="!editState[key]" style="display: inline; width: 100px">{{item.projectName}}</div>
         <input *ngIf="editState[key]" [(ngModel)]="projectList[key].projectName" style="border: none; background: #E6F7FF">
         <i class="iconE" (click)="editPro(key)" nz-icon nzType="edit" nzTheme="outline"></i>
