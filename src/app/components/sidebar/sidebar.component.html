@@ -218,6 +218,6 @@
 </nz-modal>
 
 <nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" nzTitle="{{currentOrder}}" (nzOnClose)="close()">
-  <p *ngFor="let item of currentOrderItem"><i nz-icon nzType="minus-square" nzTheme="twotone"></i>  {{item.product.series}}</p>
+  <p *ngFor="let item of currentOrderItem let key = index"><i (click)="deleteCurrent(currentId, item.product.id, key)" nz-icon nzType="minus-square" nzTheme="twotone"></i>  {{item.product.series}}</p>
 
 </nz-drawer>

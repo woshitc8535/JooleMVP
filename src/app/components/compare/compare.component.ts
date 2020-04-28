@@ -18,3 +18,5 @@ export class CompareComponent implements OnInit {
     sessionStorage.setItem('compareList', JSON.stringify(['']));
   }
 }
+
+

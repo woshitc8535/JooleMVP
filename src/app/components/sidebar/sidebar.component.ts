@@ -40,6 +40,7 @@ export class SidebarComponent implements OnInit {
   visible = false;
 
   currentOrder: string;
+  currentId: number;
   currentOrderItem: Current[];
 
   subscription: Subscription;
@@ -156,6 +157,7 @@ export class SidebarComponent implements OnInit {
 
   loading(projectName, projectId) {
     this.currentOrder = projectName;
+    this.currentId = projectId;
     this.homeService.getProductFromProject(projectId);
     this.subscription = this.homeService.getCurrent().subscribe( currentItems => {
       if (currentItems) {
@@ -174,8 +176,9 @@ export class SidebarComponent implements OnInit {
     this.visible = false;
   }
 
-  deleteCurrent(projectId: number, productId: number) {
+  deleteCurrent(projectId: number, productId: number, key) {
     this.homeService.deleteProductFromProject(projectId, productId);
+    this.currentOrderItem.splice(key, 1);
     console.log(this.currentOrder);
   }
 }
